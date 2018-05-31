@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-import {int} from '../integer';
+import Integer, {int} from '../integer';
 import {Date, LocalDateTime, LocalTime} from '../temporal-types';
 
 /*
@@ -387,3 +387,71 @@ function formatNumber(num, stringLength = undefined) {
   const paddedNumString = stringLength ? numString.padStart(stringLength, '0') : numString;
   return isNegative ? '-' + paddedNumString : paddedNumString;
 }
+
+/**
+ * Get the Year from the current object
+ * @return {Number|String}
+ */
+export function getFullYear() {
+  return this.year instanceof Integer ? this.year.toNumber() : this.year;
+}
+
+/**
+ * Get 0-indexed month consistent with javascript {@Link Date}
+ * @return {Number}
+ */
+export function getMonth() {
+  const month = this.month instanceof Integer ? this.month.toNumber() : this.month;
+  return month -1;
+}
+
+/**
+ * Get the day of the month
+ * @return {Number}
+ */
+export function getDate() {
+  return this.day instanceof Integer ? this.day.toNumber() : this.day;
+}
+
+/**
+ * Get the hours
+ * @return {Number}
+ */
+export function getHours() {
+  return this.hour instanceof Integer ? this.hour.toNumber() : this.hour;
+}
+
+/**
+ * Get the minutes
+ * @return {Number}
+ */
+export function getMinutes() {
+  return this.minute instanceof Integer ? this.minute.toNumber() : this.minute;
+}
+
+/**
+ * Get the seconds
+ * @return {Number}
+ */
+export function getSeconds() {
+  return this.second instanceof Integer ? this.second.toNumber() : this.second;
+}
+
+/**
+ * Get milliseconds
+ * @return {Number}
+ */
+export function getMilliseconds() {
+  const nanosecond = this.nanosecond instanceof Integer ? this.nanosecond.toNumber() : this.nanosecond;
+  return nanosecond / 1000;
+}
+
+/**
+ * Get the timezone offset in minutes
+ * @return {Number}
+ */
+export function getTimezoneOffset() {
+  const offset = this.timeZoneOffsetSeconds instanceof Integer ? this.timeZoneOffsetSeconds.toNumber() : this.timeZoneOffsetSeconds;
+  return offset / 60;
+}
+

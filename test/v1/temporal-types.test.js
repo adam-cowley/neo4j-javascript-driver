@@ -597,6 +597,90 @@ describe('temporal-types', () => {
     expect(duration6.nanoseconds).toEqual(neo4j.int(876543001));
   });
 
+  it('should support native Date style getter functions on Date', () => {
+    const year = 2018;
+    const month = 1;
+    const day = 2;
+
+    const date = new neo4j.types.Date(year, month, day);
+
+    expect(date.getFullYear()).toEqual(year);
+    expect(date.getMonth()).toEqual(month-1);
+    expect(date.getDate()).toEqual(day);
+  });
+
+  it('should support native Date style getter functions on DateTime', () => {
+    const year = 2018;
+    const month = 1;
+    const day = 2;
+    const hour = 12;
+    const minute = 34;
+    const second = 56;
+    const nanosecond = 123400000;
+    const offset = 'Z';
+
+    const datetime = new neo4j.types.DateTime(year, month, day, hour, minute, second, nanosecond, offset);
+
+    expect(datetime.getFullYear()).toEqual(year);
+    expect(datetime.getMonth()).toEqual(month-1);
+    expect(datetime.getDate()).toEqual(day);
+    expect(datetime.getHours()).toEqual(hour);
+    expect(datetime.getMinutes()).toEqual(minute);
+    expect(datetime.getSeconds()).toEqual(second);
+    expect(datetime.getMilliseconds()).toEqual(nanosecond/1000);
+  });
+
+  it('should support native Date style getter functions on LocalDateTime', () => {
+    const year = 2018;
+    const month = 1;
+    const day = 2;
+    const hour = 12;
+    const minute = 34;
+    const second = 56;
+    const nanosecond = 123400000;
+
+    const localdatetime = new neo4j.types.LocalDateTime(year, month, day, hour, minute, second, nanosecond);
+
+    expect(localdatetime.getFullYear()).toEqual(year);
+    expect(localdatetime.getMonth()).toEqual(month-1);
+    expect(localdatetime.getDate()).toEqual(day);
+    expect(localdatetime.getHours()).toEqual(hour);
+    expect(localdatetime.getMinutes()).toEqual(minute);
+    expect(localdatetime.getSeconds()).toEqual(second);
+    expect(localdatetime.getMilliseconds()).toEqual(nanosecond/1000);
+  });
+
+  it('should support native Date style getter functions on Time', () => {
+    const hour = 12;
+    const minute = 34;
+    const second = 56;
+    const nanosecond = 123400000;
+    const offset = 360;
+
+    const time = new neo4j.types.Time(hour, minute, second, nanosecond, offset);
+
+    expect(time.getHours()).toEqual(hour);
+    expect(time.getMinutes()).toEqual(minute);
+    expect(time.getSeconds()).toEqual(second);
+    expect(time.getMilliseconds()).toEqual(nanosecond/1000);
+    expect(time.getTimezoneOffset()).toEqual(offset/60);
+  });
+
+  it('should support native Date style getter functions on LocalTime', () => {
+    const hour = 12;
+    const minute = 34;
+    const second = 56;
+    const nanosecond = 123400000;
+    const offset = 360;
+
+    const localtime = new neo4j.types.LocalTime(hour, minute, second, nanosecond, offset);
+
+    expect(localtime.getHours()).toEqual(hour);
+    expect(localtime.getMinutes()).toEqual(minute);
+    expect(localtime.getSeconds()).toEqual(second);
+    expect(localtime.getMilliseconds()).toEqual(nanosecond/1000);
+  });
+
   function testSendAndReceiveRandomTemporalValues(valueGenerator, done) {
     const asyncFunction = (index, callback) => {
       const next = () => callback();

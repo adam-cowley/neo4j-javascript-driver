@@ -17,6 +17,7 @@
  * limitations under the License.
  */
 
+import Integer from './integer';
 import * as util from './internal/temporal-util';
 import {newError} from './error';
 
@@ -88,6 +89,12 @@ export class LocalTime {
     this.minute = minute;
     this.second = second;
     this.nanosecond = nanosecond;
+
+    this.getHours = util.getHours.bind(this);
+    this.getMinutes = util.getMinutes.bind(this);
+    this.getSeconds = util.getSeconds.bind(this);
+    this.getMilliseconds = util.getMilliseconds.bind(this);
+
     Object.freeze(this);
   }
 
@@ -127,6 +134,13 @@ export class Time {
     this.second = second;
     this.nanosecond = nanosecond;
     this.timeZoneOffsetSeconds = timeZoneOffsetSeconds;
+
+    this.getHours = util.getHours.bind(this);
+    this.getMinutes = util.getMinutes.bind(this);
+    this.getSeconds = util.getSeconds.bind(this);
+    this.getMilliseconds = util.getMilliseconds.bind(this);
+    this.getTimezoneOffset = util.getTimezoneOffset.bind(this);
+
     Object.freeze(this);
   }
 
@@ -162,6 +176,11 @@ export class Date {
     this.year = year;
     this.month = month;
     this.day = day;
+
+    this.getFullYear = util.getFullYear.bind(this);
+    this.getMonth = util.getMonth.bind(this);
+    this.getDate = util.getDate.bind(this);
+
     Object.freeze(this);
   }
 
@@ -205,6 +224,15 @@ export class LocalDateTime {
     this.minute = minute;
     this.second = second;
     this.nanosecond = nanosecond;
+
+    this.getFullYear = util.getFullYear.bind(this);
+    this.getMonth = util.getMonth.bind(this);
+    this.getDate = util.getDate.bind(this);
+    this.getHours = util.getHours.bind(this);
+    this.getMinutes = util.getMinutes.bind(this);
+    this.getSeconds = util.getSeconds.bind(this);
+    this.getMilliseconds = util.getMilliseconds.bind(this);
+
     Object.freeze(this);
   }
 
@@ -254,6 +282,14 @@ export class DateTime {
     const [offset, id] = verifyTimeZoneArguments(timeZoneOffsetSeconds, timeZoneId);
     this.timeZoneOffsetSeconds = offset;
     this.timeZoneId = id;
+
+    this.getFullYear = util.getFullYear.bind(this);
+    this.getMonth = util.getMonth.bind(this);
+    this.getDate = util.getDate.bind(this);
+    this.getHours = util.getHours.bind(this);
+    this.getMinutes = util.getMinutes.bind(this);
+    this.getSeconds = util.getSeconds.bind(this);
+    this.getMilliseconds = util.getMilliseconds.bind(this);
 
     Object.freeze(this);
   }
