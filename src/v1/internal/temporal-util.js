@@ -18,7 +18,7 @@
  */
 
 import Integer, {int} from '../integer';
-import {Date, LocalDateTime, LocalTime} from '../temporal-types';
+import {Date as NativeDate, LocalDateTime, LocalTime} from '../temporal-types';
 
 /*
   Code in this util should be compatible with code in the database that uses JSR-310 java.time APIs.
@@ -182,7 +182,7 @@ export function epochDayToDate(epochDay) {
   const day = marchDayOfYear.subtract(marchMonth.multiply(306).add(5).div(10)).add(1);
   year = year.add(marchMonth.div(10));
 
-  return new Date(year, month, day);
+  return new NativeDate(year, month, day);
 }
 
 /**
@@ -453,5 +453,14 @@ export function getMilliseconds() {
 export function getTimezoneOffset() {
   const offset = this.timeZoneOffsetSeconds instanceof Integer ? this.timeZoneOffsetSeconds.toNumber() : this.timeZoneOffsetSeconds;
   return offset / 60;
+}
+
+/** 
+ * Return an instance of a native Date
+ * 
+ * @return {Date}
+ */
+export function toDate() {
+  return new Date(this.toString());
 }
 

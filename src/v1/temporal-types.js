@@ -90,12 +90,43 @@ export class LocalTime {
     this.second = second;
     this.nanosecond = nanosecond;
 
-    this.getHours = util.getHours.bind(this);
-    this.getMinutes = util.getMinutes.bind(this);
-    this.getSeconds = util.getSeconds.bind(this);
-    this.getMilliseconds = util.getMilliseconds.bind(this);
-
     Object.freeze(this);
+  }
+
+  /** 
+   * Get the hours
+   * 
+   * @return {Number}
+   */
+  getHours() {
+    return util.getHours.bind(this)();
+  }
+
+  /** 
+   * Get the minutes
+   * 
+   * @return {Number}
+   */
+  getMinutes() {
+    return util.getMinutes.bind(this)();
+  }
+
+  /** 
+   * Get the seconds
+   * 
+   * @return {Number}
+   */
+  getSeconds() {
+    return util.getSeconds.bind(this)();
+  }
+
+  /** 
+   * Get the milliseconds
+   * 
+   * @return {Number}
+   */
+  getMilliseconds() {
+    return util.getMilliseconds.bind(this)();
   }
 
   toString() {
@@ -135,13 +166,52 @@ export class Time {
     this.nanosecond = nanosecond;
     this.timeZoneOffsetSeconds = timeZoneOffsetSeconds;
 
-    this.getHours = util.getHours.bind(this);
-    this.getMinutes = util.getMinutes.bind(this);
-    this.getSeconds = util.getSeconds.bind(this);
-    this.getMilliseconds = util.getMilliseconds.bind(this);
-    this.getTimezoneOffset = util.getTimezoneOffset.bind(this);
-
     Object.freeze(this);
+  }
+
+  /** 
+   * Get the hours
+   * 
+   * @return {Number}
+   */
+  getHours() {
+    return util.getHours.bind(this)();
+  }
+
+  /** 
+   * Get the minutes
+   * 
+   * @return {Number}
+   */
+  getMinutes() {
+    return util.getMinutes.bind(this)();
+  }
+
+  /** 
+   * Get the seconds
+   * 
+   * @return {Number}
+   */
+  getSeconds() {
+    return util.getSeconds.bind(this)();
+  }
+
+  /** 
+   * Get the milliseconds
+   * 
+   * @return {Number}
+   */
+  getMilliseconds() {
+    return util.getMilliseconds.bind(this)();
+  }
+
+  /** 
+   * Get the timezone offset
+   * 
+   * @return {Number}
+   */
+  getTimezoneOffset() {
+    return util.getTimezoneOffset.bind(this)();
   }
 
   toString() {
@@ -177,11 +247,43 @@ export class Date {
     this.month = month;
     this.day = day;
 
-    this.getFullYear = util.getFullYear.bind(this);
-    this.getMonth = util.getMonth.bind(this);
-    this.getDate = util.getDate.bind(this);
-
     Object.freeze(this);
+  }
+
+  /** 
+   * Get the full year
+   * 
+   * @return {Number}
+   */
+  getFullYear() {
+    return util.getFullYear.bind(this)();
+  }
+
+  /** 
+   * Get the 0-indexed month
+   * 
+   * @return {Number}
+   */
+  getMonth() {
+    return util.getMonth.bind(this)();
+  }
+
+  /** 
+   * Get the full year
+   * 
+   * @return {Number}
+   */
+  getDate() {
+    return util.getDate.bind(this)();
+  }
+
+  /** 
+   * Return an instance of a native Date
+   * 
+   * @return {Date}
+   */
+  toDate() {
+    return util.toDate.bind(this)();
   }
 
   toString() {
@@ -225,15 +327,70 @@ export class LocalDateTime {
     this.second = second;
     this.nanosecond = nanosecond;
 
-    this.getFullYear = util.getFullYear.bind(this);
-    this.getMonth = util.getMonth.bind(this);
-    this.getDate = util.getDate.bind(this);
-    this.getHours = util.getHours.bind(this);
-    this.getMinutes = util.getMinutes.bind(this);
-    this.getSeconds = util.getSeconds.bind(this);
-    this.getMilliseconds = util.getMilliseconds.bind(this);
-
     Object.freeze(this);
+  }
+
+  /** 
+   * Get the full year
+   * 
+   * @return {Number}
+   */
+  getFullYear() {
+    return util.getFullYear.bind(this)();
+  }
+
+  /** 
+   * Get the 0-indexed month
+   * 
+   * @return {Number}
+   */
+  getMonth() {
+    return util.getMonth.bind(this)();
+  }
+
+  /** 
+   * Get the full year
+   * 
+   * @return {Number}
+   */
+  getDate() {
+    return util.getDate.bind(this)();
+  }
+
+  /** 
+   * Get the hours
+   * 
+   * @return {Number}
+   */
+  getHours() {
+    return util.getHours.bind(this)();
+  }
+
+  /** 
+   * Get the minutes
+   * 
+   * @return {Number}
+   */
+  getMinutes() {
+    return util.getMinutes.bind(this)();
+  }
+
+  /** 
+   * Get the seconds
+   * 
+   * @return {Number}
+   */
+  getSeconds() {
+    return util.getSeconds.bind(this)();
+  }
+
+  /** 
+   * Get the milliseconds
+   * 
+   * @return {Number}
+   */
+  getMilliseconds() {
+    return util.getMilliseconds.bind(this)();
   }
 
   toString() {
@@ -283,15 +440,79 @@ export class DateTime {
     this.timeZoneOffsetSeconds = offset;
     this.timeZoneId = id;
 
-    this.getFullYear = util.getFullYear.bind(this);
-    this.getMonth = util.getMonth.bind(this);
-    this.getDate = util.getDate.bind(this);
-    this.getHours = util.getHours.bind(this);
-    this.getMinutes = util.getMinutes.bind(this);
-    this.getSeconds = util.getSeconds.bind(this);
-    this.getMilliseconds = util.getMilliseconds.bind(this);
-
     Object.freeze(this);
+  }
+
+  /** 
+   * Get the full year
+   * 
+   * @return {Number}
+   */
+  getFullYear() {
+    return util.getFullYear.bind(this)();
+  }
+
+  /** 
+   * Get the 0-indexed month
+   * 
+   * @return {Number}
+   */
+  getMonth() {
+    return util.getMonth.bind(this)();
+  }
+
+  /** 
+   * Get the full year
+   * 
+   * @return {Number}
+   */
+  getDate() {
+    return util.getDate.bind(this)();
+  }
+
+    /** 
+   * Get the hours
+   * 
+   * @return {Number}
+   */
+  getHours() {
+    return util.getHours.bind(this)();
+  }
+
+  /** 
+   * Get the minutes
+   * 
+   * @return {Number}
+   */
+  getMinutes() {
+    return util.getMinutes.bind(this)();
+  }
+
+  /** 
+   * Get the seconds
+   * 
+   * @return {Number}
+   */
+  getSeconds() {
+    return util.getSeconds.bind(this)();
+  }
+
+  /** 
+   * Get the milliseconds
+   * 
+   * @return {Number}
+   */
+  getMilliseconds() {
+    return util.getMilliseconds.bind(this)();
+  }
+
+  /** 
+   * Return an instance of a native Date
+   * 
+   * @return {Date}
+   */
+  toDate() {
+    return util.toDate.bind(this)();
   }
 
   toString() {
